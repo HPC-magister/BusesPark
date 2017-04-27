@@ -4,10 +4,24 @@
 
 using namespace std;
 
+
+typedef struct times
+{
+public:
+	times(int depTime, int enTime);
+	~times();
+	int departTime;
+	int endTime;
+};
+
 times::times(int depTime, int enTime)
 {
 	departTime = depTime;
 	endTime = enTime;
+}
+
+times::~times()
+{	
 }
 
 void calculate()
@@ -21,7 +35,7 @@ void calculate()
 	departTimes.push_back(times(1, 3));
 	departTimes.push_back(times(5, 10));
 	departTimes.push_back(times(7, 9));
-	
+/*	
 	for(list<times>::iterator it = departTimes.begin(); it != departTimes.end(); it++)
 	{
 		for(list<times>::iterator jt = busesOnLineTimes.begin(); jt != busesOnLineTimes.end(); jt++)
@@ -40,6 +54,6 @@ void calculate()
 			busesOnLineTimes.push_back( *it);
 			busesOnLine++;
 	}
-
+	*/
 	printf("Need buses: %d", busesInPark);
 }

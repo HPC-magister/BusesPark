@@ -1,8 +1,7 @@
-struct times
-{
-	times(int depTime, int enTime);
-	int departTime;
-	int endTime;
-};
+#ifndef ROUTESCALCULATOR_H
+#define ROUTESCALCULATOR_H
+
 
 void calculate();
+
+#endif ROUTESCALCULATOR_H

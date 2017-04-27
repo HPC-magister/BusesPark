@@ -4,7 +4,6 @@
 #include "stdafx.h"
 #include "routesCalculator.h"
 
-
 int _tmain(int argc, _TCHAR* argv[])
 {
 	printf("Hello!\n");
