@@ -27,11 +27,13 @@ times::~times()
 void calculate()
 {
 	printf("Calculator\n");
-	list<times> departTimes;
-	list<times> busesOnLineTimes;
-	int busesInPark = 0;
-	int busesOnLine = 0;
-	int busesNeed = 0;
+	list<times> departTimes;        // расписание отправлений
+	list<times> busesOnLineTimes;   // массив с данными о временах отправления и прибытия в парк автобусов,
+								    // находящихся в данный момент на линии
+	int busesInPark = 0;            // число автобусов, находящихся в данный момент в парке
+	int busesOnLine = 0;            // число автобусов, находящихся в данный момент на линии
+	int busesNeed = 0;              // минимальное число автобусов для обеспечения
+					                // работы по заданному расписанию отправлений
 
 
 // 1st variant
@@ -49,14 +51,16 @@ void calculate()
 	departTimes.push_back(times(1, 8));
 	departTimes.push_back(times(5, 10));
 	departTimes.push_back(times(7, 9));*/
-	
-	for(list<times>::iterator it = departTimes.begin(); it != departTimes.end(); it++)
+
+// пробегаем по массиву с отправлениями	
+	for(list<times>::iterator it = departTimes.begin(); it != departTimes.end(); it++) 
 	{
-		
-		for(list<times>::iterator jt = busesOnLineTimes.begin(); jt != busesOnLineTimes.end(); jt++)
-		{
+// пробегаем по массиву с автобусами, которые в данный момент на линии
+		for(list<times>::iterator jt = busesOnLineTimes.begin(); jt != busesOnLineTimes.end(); jt++) 
+		{																							 
 			if (busesOnLine > 0 && ((*jt).endTime < (*it).departTime))
 			{
+// если автобус к моменту очередного отправления завершил свой маршрут, удаляем данные о нём
 				busesOnLineTimes.erase(jt);
 				printf("Depart time: %d\n", (*it).departTime);
 				busesOnLine--;
@@ -72,9 +76,11 @@ void calculate()
 		if (busesInPark <= 0)
 		{
 			busesInPark++;
-			busesNeed++;
-		}
+			busesNeed++;							
+		}											
 		busesInPark--;
+
+// отправление очередного автобуса
 			busesOnLineTimes.push_back( *it);
 			busesOnLine++;
 	}
