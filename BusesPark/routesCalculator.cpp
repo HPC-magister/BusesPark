@@ -4,13 +4,23 @@
 
 using namespace std;
 
+times::times(int depTime, int enTime)
+{
+	departTime = depTime;
+	endTime = enTime;
+}
+
 void calculate()
 {
 	printf("Calculator");
-		list<times> departTimes;
+	list<times> departTimes;
 	list<times> busesOnLineTimes;
 	int busesInPark = 0;
 	int busesOnLine = 0;
+
+	departTimes.push_back(times(1, 3));
+	departTimes.push_back(times(5, 10));
+	departTimes.push_back(times(7, 9));
 	
 	for(list<times>::iterator it = departTimes.begin(); it != departTimes.end(); it++)
 	{
